@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include neo4j-community-server"
+      include_role:
+        name: "neo4j-community-server"
