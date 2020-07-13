@@ -17,3 +17,9 @@
   dnf:
     name: "{{ neo4j_package_name | default(_neo4j_package_name) }}"
     state: present
+
+- name: Ensure service is started and enabled
+  service:
+    name: neo4j
+    state: started
+    enabled: true
