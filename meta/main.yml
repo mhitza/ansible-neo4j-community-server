@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: neo4j
   author: Marius Ghita
   description: Installs Neo4j Community Edition Server
   company:
@@ -11,10 +12,7 @@ galaxy_info:
   # min_ansible_container_version:
 
   platforms:
-    - name: RedHat
-    - versions:
-        - 8
-    - name: CentOS
+    - name: EL
       versions:
         - 8
 
