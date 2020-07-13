@@ -1,2 +1,3 @@
 ---
 # defaults file for neo4j-community-server
+_neo4j_package_name: neo4j

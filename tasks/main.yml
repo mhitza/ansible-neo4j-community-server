@@ -1,2 +1,19 @@
 ---
-# tasks file for neo4j-community-server
+- name: Ensure Yum/DNF Neo4j repository exists
+  template:
+    src: files/neo4j.repo
+    dest: /etc/yum.repos.d/neo4j.repo
+
+- name: Ensure Neo Technology GPG key is imported
+  rpm_key:
+    key: https://debian.neo4j.com/neotechnology.gpg.key
+
+- name: Set specific stable version to install
+  set_fact:
+    neo4j_package_name: "neo4j-{{ neo4j_version }}"
+  when: neo4j_version is defined
+
+- name: Ensure Neo4j packages are installed
+  dnf:
+    name: "{{ neo4j_package_name | default(_neo4j_package_name) }}"
+    state: present

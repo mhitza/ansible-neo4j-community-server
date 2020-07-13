@@ -4,4 +4,4 @@
   tasks:
     - name: "Include neo4j-community-server"
       include_role:
-        name: "neo4j-community-server"
+        name: "ansible-neo4j-community-server"
