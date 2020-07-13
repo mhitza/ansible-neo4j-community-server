@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: master
 
       - run: |
           sed -i 's/^  version:.*$/  version: ${{ env.TAG_NAME }}/g' README.md
@@ -20,5 +22,7 @@ jobs:
         with:
           add: 'README.md'
           message: 'update usage section with latest release version'
+          author: GitHub Actions
+          author_email: "action@github.com"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
