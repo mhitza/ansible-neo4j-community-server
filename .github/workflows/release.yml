@@ -1,0 +1,24 @@
+name: Release handler
+
+on:
+  release:
+    types: [ released ]
+
+env:
+  TAG_NAME: ${{ github.event.release.tag_name }}
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: |
+          sed -i 's/^  version:.*$/  version: ${{ env.TAG_NAME }}/g' README.md
+
+      - uses: EndBug/add-and-commit@v4
+        with:
+          add: 'README.md'
+          message: 'update usage section with latest release version'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
