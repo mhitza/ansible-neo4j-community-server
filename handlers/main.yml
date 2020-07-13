@@ -1,2 +1,6 @@
 ---
 # handlers file for neo4j-community-server
+- name: restart neo4j server
+  service:
+    name: neo4j
+    state: restarted

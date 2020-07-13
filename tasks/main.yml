@@ -18,15 +18,16 @@
     name: "{{ neo4j_package_name | default(_neo4j_package_name) }}"
     state: present
 
+- name: Ensure service is started and enabled
+  service:
+    name: neo4j
+    state: started
+    enabled: true
+
 - name: Set listening address
   lineinfile:
     path: /etc/neo4j/neo4j.conf
     regexp: '^#dbms.default_listen_address='
     line: "dbms.default_listen_address={{ neo4j_listen_address }}"
   when: neo4j_listen_address is defined
-
-- name: Ensure service is started and enabled
-  service:
-    name: neo4j
-    state: started
-    enabled: true
+  notify: restart neo4j server
