@@ -7,13 +7,13 @@ Neo4j Community Server role for RedHat/CentOS 8
 neo4j_version: 4.10
 
 # OPTIONAL defaults to accepting connections from localhost only
-# defined it (like in the example below) to expose neo4j on all interfaces
+# define it like in the example below, to expose neo4j on all interfaces
 neo4j_listen_address: 0.0.0.0
 ```
 
 ## Usage
 
-Use latest role in your `ansible-galaxy` requirements.yml file
+Use latest version of the role in your ansible-galaxy requirements.yml file
 
 ```yaml
 - src: mhitza.neo4j
