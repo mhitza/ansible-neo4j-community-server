@@ -1,0 +1,15 @@
+name: Run molecule
+
+on: [ push ]
+
+
+jobs:
+  molecule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: "${{ github.repository }}"
+
+      - uses: robertdebock/molecule-action@2.5.1
